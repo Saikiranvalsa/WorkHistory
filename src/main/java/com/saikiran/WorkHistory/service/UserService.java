@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,9 +29,10 @@ public class UserService {
     @Autowired
     private AuthenticationManager authenticationManager;
     public User signup(SignupDto signupDto) {
+        BCryptPasswordEncoder encoder=new BCryptPasswordEncoder(12);
         User user=new User();
         user.setUsername(signupDto.getNumber());
-        user.setPassword(signupDto.getPassword());
+        user.setPassword(encoder.encode(signupDto.getPassword()));
         user.setName(signupDto.getName());
         user.setNumber(signupDto.getNumber());
         try{

@@ -24,7 +24,11 @@ public class OwnerController {
         return ownerService.getWorkHistory(principal);
     }
     @GetMapping("/owner/works/{customerNumber}")
-    public List<Work> getWorksofCustomer(@PathVariable String customerNumber,Principal principal){
+    public List<OwnerHistoryDto> getWorksofCustomer(@PathVariable String customerNumber,Principal principal){
         return ownerService.getWorksOfCustomer(customerNumber,principal);
+    }
+    @GetMapping("/owner/mycustomers")
+    public List<MyCustomers> getMyCustomers(Principal principal){
+        return ownerService.getMyCustomers(principal);
     }
 }

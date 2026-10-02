@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 @Entity
 @Data
@@ -16,6 +17,8 @@ public class Work {
     private String machine;
     @Column(nullable = false)
     private String workType;
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal acres;
     @Column(nullable = false)
     private LocalDate date;
     @Column(nullable = false)

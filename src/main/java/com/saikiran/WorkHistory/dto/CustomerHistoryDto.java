@@ -3,6 +3,7 @@ package com.saikiran.WorkHistory.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -12,6 +13,7 @@ public class CustomerHistoryDto {
     private String ownerNumber;
     private String machine;
     private String workType;
+    private BigDecimal acres;
     private Double amount;
     private Double paid;
     private Double due;

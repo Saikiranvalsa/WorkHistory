@@ -13,9 +13,15 @@ import java.util.List;
 public class WorkController {
     @Autowired
     private WorkService workService;
+    //Add Wok
     @PostMapping("/work")
-    public Work addWorkDetails(@RequestBody WorkDto workDto, Principal principal){
+    public String addWorkDetails(@RequestBody WorkDto workDto, Principal principal){
         return workService.addWorkDetails(workDto,principal);
+    }
+    //Delete work
+    @GetMapping("/work/{id}")
+    public String deleteWork(@PathVariable Integer id){
+        return workService.deleteWork(id);
     }
 
 }

@@ -19,7 +19,7 @@ public class WorkService {
     private WorkRepository workRepository;
     @Autowired
     private OwnerRepository ownerRepository;
-    public Work addWorkDetails(WorkDto workDto, Principal principal) {
+    public String addWorkDetails(WorkDto workDto, Principal principal) {
         Owner owner= null;
         try {
             owner = ownerRepository.findByUserUsername(principal.getName());
@@ -30,6 +30,7 @@ public class WorkService {
         work.setWorkType(workDto.getWorkType());
         work.setDate(workDto.getDate());
         work.setAmount(workDto.getAmount());
+        work.setAcres(workDto.getAcres());
         work.setCustomerName(workDto.getCustomerName());
         work.setCustomerNumber(workDto.getCustomerNumber());
         work.setDue(workDto.getAmount()-workDto.getPaid());
@@ -37,8 +38,12 @@ public class WorkService {
         work.setPaid(workDto.getPaid());
         work.setOwner(owner);
         workRepository.save(work);
-        return work;
+        return "Succefully added";
     }
 
 
+    public String deleteWork(Integer id) {
+        workRepository.deleteById(id);
+        return "Successfully deleted";
+    }
 }

@@ -26,6 +26,7 @@ public class CustomerService {
             customerHistoryDto.setDate(work.getDate());
             customerHistoryDto.setWorkType(work.getWorkType());
             customerHistoryDto.setAmount(work.getAmount());
+            customerHistoryDto.setAcres(work.getAcres());
             customerHistoryDto.setDue(work.getDue());
             customerHistoryDto.setOwnerName(work.getOwner().getUser().getName());
             customerHistoryDto.setOwnerNumber(work.getOwner().getUser().getNumber());
@@ -33,9 +34,21 @@ public class CustomerService {
         }).toList();
     }
 
-    public List<Work> getWorksofOwner(String ownernumber, Principal principal) {
+    public List<CustomerHistoryDto> getWorksofOwner(String ownernumber, Principal principal) {
         Customer customer=customerRepository.findByUserUsername(principal.getName());
         List<Work> works=workRepository.findByCustomerNumber(customer.getUser().getNumber());
-        return works.stream().filter(work->work.getOwner().getUser().getNumber().equals(ownernumber)).toList();
+        return works.stream().filter(work->work.getOwner().getUser().getNumber().equals(ownernumber)).toList().stream().map(work ->{
+            CustomerHistoryDto customerHistoryDto=new CustomerHistoryDto();
+            customerHistoryDto.setOwnerNumber(work.getOwner().getUser().getNumber());
+            customerHistoryDto.setMachine(work.getMachine());
+            customerHistoryDto.setDate(work.getDate());
+            customerHistoryDto.setWorkType(work.getWorkType());
+            customerHistoryDto.setAcres(work.getAcres());
+            customerHistoryDto.setAmount(work.getAmount());
+            customerHistoryDto.setPaid(work.getPaid());
+            customerHistoryDto.setOwnerName(work.getOwner().getUser().getName());
+            customerHistoryDto.setDue(work.getAmount()-work.getPaid());
+            return customerHistoryDto;
+        }).toList();
     }
 }
