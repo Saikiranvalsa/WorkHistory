@@ -30,7 +30,8 @@ public class Work {
     private String customerName;
     @Column(nullable = false)
     private String customerNumber;
-
+    private String driverName;
+    private String driverNumber;
     @ManyToOne
     @JoinColumn(name = "owner_id", nullable = false)
     private Owner owner;

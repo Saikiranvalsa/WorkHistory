@@ -1,6 +1,7 @@
 package com.saikiran.WorkHistory.service;
 
 import com.saikiran.WorkHistory.dto.LoginDto;
+import com.saikiran.WorkHistory.dto.ProfileDto;
 import com.saikiran.WorkHistory.dto.SignupDto;
 import com.saikiran.WorkHistory.exception.UserAlreadyFound;
 import com.saikiran.WorkHistory.model.Customer;
@@ -13,8 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.security.Principal;
 
 @Service
 public class UserService {
@@ -55,5 +59,14 @@ public class UserService {
             return jwtTokenService.genearateJwtToken(loginDto.getUsername());
         }
         return "fail";
+    }
+
+    public ProfileDto getProfileInfo(Principal principal) {
+        User user=userRepository.findByUsername(principal.getName());
+        ProfileDto profileDto=new ProfileDto();
+        profileDto.setName(user.getName());
+        profileDto.setUsername(user.getUsername());
+        profileDto.setNumber(user.getNumber());
+        return profileDto;
     }
 }

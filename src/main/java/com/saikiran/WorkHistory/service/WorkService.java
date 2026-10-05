@@ -37,6 +37,8 @@ public class WorkService {
         work.setMachine(workDto.getMachine());
         work.setPaid(workDto.getPaid());
         work.setOwner(owner);
+        work.setDriverName(workDto.getDriverName());
+        work.setDriverNumber(workDto.getDriverNumber());
         workRepository.save(work);
         return "Succefully added";
     }

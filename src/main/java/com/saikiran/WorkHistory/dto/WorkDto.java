@@ -14,6 +14,8 @@ public class WorkDto {
     private LocalDate date;
     private Double amount;
     private BigDecimal acres;
+    private String driverName;
+    private String driverNumber;
     private Double paid;
     private String customerName;
     private String customerNumber;

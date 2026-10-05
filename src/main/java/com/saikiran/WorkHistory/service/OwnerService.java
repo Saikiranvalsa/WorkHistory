@@ -28,6 +28,8 @@ public class OwnerService {
             ownerHistoryDto.setPaid(work.getPaid());
             ownerHistoryDto.setWorkType(work.getWorkType());
             ownerHistoryDto.setAmount(work.getAmount());
+            ownerHistoryDto.setDriverName(work.getDriverName());
+            ownerHistoryDto.setDriverNumber(work.getDriverNumber());
             ownerHistoryDto.setCustomerName(work.getCustomerName());
             ownerHistoryDto.setDue(work.getDue());
             return ownerHistoryDto;
@@ -47,6 +49,8 @@ public class OwnerService {
             ownerHistoryDto.setAmount(work.getAmount());
             ownerHistoryDto.setWorkType(work.getWorkType());
             ownerHistoryDto.setCustomerName(work.getCustomerName());
+            ownerHistoryDto.setDriverName(work.getDriverName());
+            ownerHistoryDto.setDriverNumber(work.getDriverNumber());
             ownerHistoryDto.setCustomerNumber(work.getCustomerNumber());
             return ownerHistoryDto;
         }).toList();

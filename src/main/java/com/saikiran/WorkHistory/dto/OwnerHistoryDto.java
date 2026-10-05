@@ -14,6 +14,8 @@ public class OwnerHistoryDto {
     private String machine;
     private String workType;
     private BigDecimal acres;
+    private String driverName;
+    private String driverNumber;
     private Double amount;
     private Double paid;
     private Double due;

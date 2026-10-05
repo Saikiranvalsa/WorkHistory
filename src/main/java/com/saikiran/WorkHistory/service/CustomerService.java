@@ -28,6 +28,8 @@ public class CustomerService {
             customerHistoryDto.setAmount(work.getAmount());
             customerHistoryDto.setAcres(work.getAcres());
             customerHistoryDto.setDue(work.getDue());
+            customerHistoryDto.setDriverName(work.getDriverName());
+            customerHistoryDto.setDriverNumber(work.getDriverNumber());
             customerHistoryDto.setOwnerName(work.getOwner().getUser().getName());
             customerHistoryDto.setOwnerNumber(work.getOwner().getUser().getNumber());
             return customerHistoryDto;
@@ -46,6 +48,8 @@ public class CustomerService {
             customerHistoryDto.setAcres(work.getAcres());
             customerHistoryDto.setAmount(work.getAmount());
             customerHistoryDto.setPaid(work.getPaid());
+            customerHistoryDto.setDriverNumber(work.getDriverNumber());
+            customerHistoryDto.setDriverName(work.getDriverName());
             customerHistoryDto.setOwnerName(work.getOwner().getUser().getName());
             customerHistoryDto.setDue(work.getAmount()-work.getPaid());
             return customerHistoryDto;
